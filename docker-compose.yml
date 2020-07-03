@@ -1,0 +1,16 @@
+version: "3.1"
+
+services:
+  docker_course:
+    image: docker_course:latest
+    ports: 
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=docker_course_redis
+      - DEVELOPMENT_MODE=true
+      - ENABLE_REDIS=true
+    links:
+      - docker_course_redis
+
+  docker_course_redis:
+    image: redis:latest
